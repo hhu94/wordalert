@@ -3,8 +3,8 @@
 
 import praw, oaux, time, collections, requests, traceback
 
-TARGET_STRING = "" # what you want to search for
-RECIPIENT = "" # without /u/
+TARGET_STRING = " cat " # what you want to search for
+RECIPIENT = "twistitup" # without /u/
 SUBJECT = TARGET_STRING + " has been spotted!"
 MESSAGE = TARGET_STRING + " has been spotted! Here is the url "
 SLEEP_TIME = 300
@@ -27,12 +27,10 @@ def searchAndReply():
 
 if __name__ == "__main__":
     r = oaux.login()
-    last_refresh_time = time.time()
     submissionsDone = collections.deque(maxlen = 100)
     commentsDone = collections.deque(maxlen = 100)
     while True:
         try:
-            last_refresh_time = oaux.checkRefresh(r, last_refresh_time)
             searchAndReply()
             time.sleep(SLEEP_TIME)
         except KeyboardInterrupt:
