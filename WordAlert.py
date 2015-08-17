@@ -1,10 +1,10 @@
-# WordAlert:0.1 (by /u/twistitup)
+# WordAlert:1.0 (by /u/twistitup)
 # Made with Python 3.4.0
 
 import praw, oaux, time, collections, random, requests, traceback
 
-TARGET_WORD = ""
-RECIPIENT = ""
+TARGET_WORD = "" # lowercase
+RECIPIENT = "" # without /u/
 SUBJECT = TARGET_WORD + " has been spotted!"
 MESSAGE = TARGET_WORD + " has been spotted! Here is the url "
 
@@ -41,11 +41,11 @@ if __name__ == "__main__":
             exc = e._raw
             print("Something bad happened! HTTPError", exc.status_code)
             if exc.status_code == 503:
-                print("Let's wait til reddit comes back! Sleeping", 
+                print("Let's wait til reddit comes back! Sleeping",
                     SLEEP_TIME, "seconds.")
                 time.sleep(SLEEP_TIME)
         except Exception as e:
             print("Something bad happened!", e)
             traceback.print_exc()
-            print("Sleeping", SLEEP_TIME, "seconds."))
+            print("Sleeping", SLEEP_TIME, "seconds.")
             time.sleep(SLEEP_TIME)
