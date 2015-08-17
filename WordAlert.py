@@ -1,24 +1,24 @@
 # WordAlert:1.0 (by /u/twistitup)
 # Made with Python 3.4.0
 
-import praw, oaux, time, collections, random, requests, traceback
+import praw, oaux, time, collections, requests, traceback
 
-TARGET_WORD = "" # lowercase
+TARGET_STRING = "" # what you want to search for
 RECIPIENT = "" # without /u/
-SUBJECT = TARGET_WORD + " has been spotted!"
-MESSAGE = TARGET_WORD + " has been spotted! Here is the url "
+SUBJECT = TARGET_STRING + " has been spotted!"
+MESSAGE = TARGET_STRING + " has been spotted! Here is the url "
 SLEEP_TIME = 300
 
 def searchAndReply():
     for submission in r.get_new(limit = None):
-        if (TARGET_WORD in str.lower(submission.selftext)
+        if (str.lower(TARGET_STRING) in str.lower(submission.selftext)
                 and submission.id not in submissionsDone):
             r.send_message(RECIPIENT, SUBJECT, MESSAGE + submission.url)
             print("Alert sent!")
             submissionsDone.append(submission.id)
     comments = r.get_comments('all', limit = None)
     for comment in comments:
-        if (TARGET_WORD in str.lower(comment.body)
+        if (str.lower(TARGET_STRING) in str.lower(comment.body)
                 and comment.id not in commentsDone
                 and comment.submission.id not in submissionsDone):
             r.send_message(RECIPIENT, SUBJECT, MESSAGE + comment.permalink)
