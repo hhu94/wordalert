@@ -3,11 +3,15 @@
 
 import praw, oaux, time, collections, requests, traceback
 
+### User configuration ###
+
 TARGET_STRING = "" # what you want to search for
 RECIPIENT = "" # without /u/
 SUBJECT = TARGET_STRING + " has been spotted!"
 MESSAGE = TARGET_STRING + " has been spotted! Here is the url "
 SLEEP_TIME = 300
+
+### End of user configuration ###
 
 def searchAndReply():
     for submission in r.get_new(limit = None):
