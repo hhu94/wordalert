@@ -5,7 +5,7 @@
 import praw, time
 
 # Fill in APP_ID and SECRET first. They can be found on the Reddit app settings.
-USER_AGENT = "WordAlert:0.1 (by /u/twistitup)"
+USER_AGENT = "WordAlert:1.0 (by /u/twistitup)"
 APP_ID = ""
 SECRET = ""
 URI = "https://127.0.0.1:65010/authorize_callback"
