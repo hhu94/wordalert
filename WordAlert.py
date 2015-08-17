@@ -7,6 +7,7 @@ TARGET_WORD = "" # lowercase
 RECIPIENT = "" # without /u/
 SUBJECT = TARGET_WORD + " has been spotted!"
 MESSAGE = TARGET_WORD + " has been spotted! Here is the url "
+SLEEP_TIME = 300
 
 def searchAndReply():
     for submission in r.get_new(limit = None):
