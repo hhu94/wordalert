@@ -3,8 +3,8 @@
 
 import praw, oaux, time, collections, requests, traceback
 
-TARGET_STRING = " cat " # what you want to search for
-RECIPIENT = "twistitup" # without /u/
+TARGET_STRING = "" # what you want to search for
+RECIPIENT = "" # without /u/
 SUBJECT = TARGET_STRING + " has been spotted!"
 MESSAGE = TARGET_STRING + " has been spotted! Here is the url "
 SLEEP_TIME = 300
