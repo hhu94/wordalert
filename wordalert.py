@@ -1,4 +1,4 @@
-# WordAlert:1.0 (by /u/twistitup)
+# WordAlert:1.1 (by /u/twistitup)
 # Made with Python 3.4.0
 
 import praw, oaux, time, collections, requests, traceback
