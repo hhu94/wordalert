@@ -4,17 +4,21 @@
 
 import praw, configparser, time
 
-# Fill in appID and secret in oaux.ini first.
-# They can be found on the Reddit app settings.
+# You should have already created a reddit app in your bot's account
+# before using this tool.
+# Fill in appID and secret in oaux.ini manually.
+# These values can be found in your reddit app settings.
 
 # Run setup() from the python console to retrieve a refreshToken.
 # It will be automatically written into oaux.ini.
-# Make sure you're logged into your bot Reddit account on your browser first.
+# Make sure you're logged into your bot's reddit account on your browser first.
 def setup():
     config = configparser.ConfigParser()
     config.read("oaux.ini")
     r = praw.Reddit(config["DEFAULT"]["userAgent"])
-    r.set_oauth_app_info(config["DEFAULT"]["appID"], config["DEFAULT"]["secret"], config["DEFAULT"]["URI"])
+    r.set_oauth_app_info(
+        config["DEFAULT"]["appID"], config["DEFAULT"]["secret"],
+        config["DEFAULT"]["URI"])
     url = r.get_authorize_url("accessCode", config["DEFAULT"]["scopes"], True)
     import webbrowser
     webbrowser.open(url)
@@ -37,7 +41,9 @@ def login():
     config = configparser.ConfigParser()
     config.read("oaux.ini")
     r = praw.Reddit(config["DEFAULT"]["userAgent"])
-    r.set_oauth_app_info(config["DEFAULT"]["appID"], config["DEFAULT"]["secret"], config["DEFAULT"]["URI"])
+    r.set_oauth_app_info(
+        config["DEFAULT"]["appID"], config["DEFAULT"]["secret"],
+        config["DEFAULT"]["URI"])
     r.refresh_access_information(config["DEFAULT"]["refreshToken"])
     print("Login time:", time.strftime("%a, %d %b %Y %H:%M:%S",
             time.localtime()))
